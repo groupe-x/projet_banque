@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,17 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('homesite/index');
-});
+});*/
 
 Route::get("/register", [AuthController::class,'register'])->name('register.index');
 Route::post("enregistre",[AuthController::class,'store'])->name('register.store');
 Route::get('/login',[AuthController::class,'index'])->name('login.index');
 Route::post("/login-verif",[AuthController::class,'login'])->name('login.login');
+
+//Auth::routes();
+
+Route::get('/home', [HomeController::class,'index'])->name('home');
+Route::get('virement',  [HomeController::class,'virement'])->name('pages.virement');
+
