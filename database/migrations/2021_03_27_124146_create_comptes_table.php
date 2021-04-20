@@ -16,11 +16,17 @@ class CreateComptesTable extends Migration
         Schema::create('comptes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('numeroCompte');
+            $table->unsignedBigInteger('id_client');
             $table->bigInteger('solde');
             $table->unsignedBigInteger('id_typecompte');
             $table->foreign('id_typecompte')
             ->references('id')
             ->on('type_comptes')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->foreign('id_client')
+            ->references('id')
+            ->on('client')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();

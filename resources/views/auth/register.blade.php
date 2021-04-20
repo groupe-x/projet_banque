@@ -101,12 +101,12 @@
     </style>
 
 
-    <div class="contents" style="background-image: url({{asset('img/baby.jpg')}});background-attachment: fixed;background-size: cover;">
-    <h1 style="text-align:center; font-size:50px; margin-top:10px; color:#fff">Extrait d'acte de Naissance</h1>
+    <div class="contents" style="background-image: url({{asset('images/bq.jpg')}});background-attachment: fixed;background-size: cover;">
+    <h1 style="text-align:center; font-size:50px; margin-top:10px; color:#fff">PRUNI BANQUE</h1>
     <form id="regForm" method="post" action="{{route('register.store')}}">
         @csrf
         <h1>ENREGISTREMENT</h1>
-        <p style="color: red;font-size: 14px;">NB : ce site ne traite pas les extraits faits au sein des sous-préfectures</p>
+        {{-- <p style="color: red;font-size: 14px;">NB : ce site ne traite pas les extraits faits au sein des sous-préfectures</p> --}}
         <div class="tab">
             Nom:
             <p><input type="text" name="nom" id="nom" placeholder="Entrez votre nom" required=""></p>
@@ -134,6 +134,15 @@
             </p>
             Numero:
             <p><input type="text" name="numero" id="lieu" placeholder="Entrez votre numero" required=""></p>
+            email:<p><input type="email" name="email" id="pere" placeholder="entrez votre mail" required="">
+
+
+
+        </div>
+        <div class="tab">
+            Numero piece d'identité:
+            <p><input type="text" name="num_piece" id="piece" placeholder="Entrez le numero de votre piece d'identité" required=""></p>
+
             Type de compte:
             <p>
                 <select name="type_compte" id="">
@@ -141,18 +150,11 @@
                     <option value="courant">courant</option>
                 </select>
             </p>
-
-        </div>
-        <div class="tab">email:
-            <p><input type="email" name="email" id="pere" placeholder="entrez votre mail" required="">
-
-
-
         </div>
 
         <div style="overflow:auto;">
             <div style="float:right;">
-                <a href=""> <span class="btn btn-outline-danger">Annuler</span></a>
+                <a href="{{route('home')}}"> <span class="btn btn-outline-danger">Annuler</span></a>
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Précédent</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Suivant</button>
             </div>

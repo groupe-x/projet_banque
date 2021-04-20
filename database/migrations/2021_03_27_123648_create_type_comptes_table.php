@@ -16,7 +16,7 @@ class CreateTypeComptesTable extends Migration
         Schema::create('type_comptes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('libelle');
-            $table->String('interet');
+            $table->String('interet')->default('0');
             $table->timestamps();
         });
     }

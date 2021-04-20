@@ -15,7 +15,14 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('auth.login');
+        // dd(\Auth::user()->nom);
+
+        if(auth()->check()){
+            return redirect()->route('home');
+            }else{
+                return view('auth.login');
+            }
+
     }
 
     /**
@@ -44,24 +51,28 @@ $userdata = array(
             'password'  => $request->password
         );
     // attempt to do the login
-    if (\Auth::attempt($userdata)) { 
+    // dd(\Auth::attempt($userdata));
+    // auth()->login($user);
+    if (\Auth::attempt($userdata)) {
 
-        // validation successful!
-        // redirect them to the secure section or whatever
-        // return Redirect::to('secure');
-        // for now we'll just echo success (even though echoing in a controller is bad)
-        echo 'SUCCESS!';
+        // dd(\Auth::user()->nom);
+        // echo 'SUCCESS!';
+        return redirect()->route('home');
+
 
     } else {
 
-        // validation not successful, send back to form
-        echo "kko";
-        // return Redirect::to('login');
+
+        return Redirect::to('login');
 
     }
 
     }
 
+    public function logout(Request $request) {
+        \Auth::logout();
+        return redirect('/login');
+      }
     /**
      * Store a newly created resource in storage.
      *
@@ -75,11 +86,12 @@ $userdata = array(
       $client->nom=$request->nom;
       $client->prenoms=$request->prenoms;
       $client->email=$request->email;
-      $client->type_de_compte=$request->type_compte;
+      $client->num_piece=$request->num_piece;
       $client->civilite=$request->civilite;
       $client->dateNaissance=$request->date_naissance;
       $client->numero=$request->numero;
-      $client->save();
+      $id=$client->save();
+      dd($id);
         return redirect()->route('login.index');
     }
 

@@ -15,10 +15,10 @@ class CreateAdressesTable extends Migration
     {
         Schema::create('adresses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('ville');
+            $table->String('ville')->default('Abidjan');
             $table->String('detail');
-            $table->String('numero');
-            $table->String('email');
+            // $table->String('numero');
+            // $table->String('email');
             $table->unsignedBigInteger('id_client');
             $table->foreign('id_client')
             ->references('id')

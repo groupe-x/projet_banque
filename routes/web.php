@@ -19,13 +19,15 @@ use App\Http\Controllers\HomeController;
     return view('homesite/index');
 });*/
 
+Route::get('/', [HomeController::class,'index'])->name('accueil');
 Route::get("/register", [AuthController::class,'register'])->name('register.index');
 Route::post("enregistre",[AuthController::class,'store'])->name('register.store');
-Route::get('/login',[AuthController::class,'index'])->name('login.index');
+Route::get('login',[AuthController::class,'index'])->name('login');
 Route::post("/login-verif",[AuthController::class,'login'])->name('login.login');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
-//Auth::routes();
-
-Route::get('/home', [HomeController::class,'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+Route::get('/mon-espace', [HomeController::class,'home'])->name('home');
 Route::get('virement',  [HomeController::class,'virement'])->name('pages.virement');
-
+Route::get('compte', [HomeController::class,'compte'])->name('pages.compte');
+});

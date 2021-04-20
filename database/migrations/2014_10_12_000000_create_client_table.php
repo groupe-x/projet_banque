@@ -18,12 +18,11 @@ class CreateClientTable extends Migration
             $table->string('nom');
             $table->string('prenoms');
             $table->string('email')->unique();
-            $table->string('password')->default('123');
-            $table->string("type_de_compte");
+            $table->string('password')->default('$2y$10$Z8f5e7ypX99tZXfzOt3R8uauHZtz/08Hwk87zttZ2g/fd0mOh1S4a');
+            $table->string("num_piece")->default(' ');
             $table->String('civilite');
             $table->String('dateNaissance');
             $table->String('numero');
-            // $table->String('lieuNaissance')->default("");
             $table->boolean('is_ok')->default(0);
             $table->rememberToken();
             $table->timestamps();

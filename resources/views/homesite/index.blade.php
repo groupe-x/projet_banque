@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- awesone fonts css-->
-    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" type="text/css">
     <!-- owl carousel css-->
-    <link rel="stylesheet" href="owl-carousel/assets/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="{{asset('owl-carousel/assets/owl.carousel.min.css')}}" type="text/css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <!-- custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <title>pruniBanque - la banque du futur</title>
     <style>
 
@@ -164,7 +164,7 @@
 </div>
 <div class="container-fluid gtco-testimonials">
     <div class="container">
-        <h2>What our customers say about us.</h2>
+        {{-- <h2>What our customers say about us.</h2> --}}
         <div class="owl-carousel owl-carousel1 owl-theme">
             <div>
                 <div class="card text-center"><img class="card-img-top" src="images/customer1.jpg" alt="">
@@ -218,23 +218,23 @@
                 <input type="text" class="form-control" placeholder="Full Name">
                 <input type="email" class="form-control" placeholder="Email Address">
                 <textarea class="form-control" placeholder="Message"></textarea>
-                <a href="#" class="submit-button">Envoyé <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                &nbsp; <a href="#" class="submit-button">Envoyé <i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
 
         </div>
         <div class="col-12">
-            <p>&copy; 2021. Tout droit réservé. Design by <a href="http://bit.ly/emmanuelmalan" target="_blank">nucleus</a>.</p>
+            <p>&copy; 2021. Tout droit réservé. Design by Nucleus.</p>
         </div>
     </div>
 </footer>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="{{asset('js/jquery-3.3.1.slim.min.js')}}"></script>
+<script src="{{asset('js/popper.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- owl carousel js-->
-<script src="owl-carousel/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
+<script src="{{asset('owl-carousel/owl.carousel.min.js')}}"></script>
+<script src="{{asset('js/main.js')}}"></script>
 </body>
 </html>
