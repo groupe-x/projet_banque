@@ -15,15 +15,17 @@ class CreateOperationsTable extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('montant');
-            $table->date('date');
             $table->unsignedBigInteger('id_client');
+            $table->String('montant');
+            $table->String('solde_initial');
+            $table->String('new_solde');
+            $table->unsignedBigInteger('id_type_op');
+            $table->date('date');
             $table->foreign('id_client')
             ->references('id')
-            ->on('users')
+            ->on('client')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->unsignedBigInteger('id_type_op');
             $table->foreign('id_type_op')
             ->references('id')
             ->on('type_operations')

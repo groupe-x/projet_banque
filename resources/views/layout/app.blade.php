@@ -70,6 +70,6 @@
         <script src="{{asset('vendor/vector-map/jquery.vmap.world.js')}}"></script>
 
         <!-- Main JS-->
-        <script src="{{asset('js/main.js')}}"></script>
+        <script src="{{asset('js/main2.js')}}"></script>
 </body>
 </html>

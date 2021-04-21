@@ -35,7 +35,12 @@ class HomeController extends Controller
         $montant = $request->montant;
         $date=now();
         \DB::table('virements')->insert(["id_client"=>auth()->user()->id,"numcompte_origin"=>$cpt_origin,"numcompte_destin"=>$cpt_desti,"montant"=>$montant,"date_virement"=>$date]);
-        return redirect()->route('home');
+        $cpt=\DB::table('comptes')->where("numeroCompte",$cpt_origin)->first();
+        $solde_initial = $cpt->solde;
+        $new_solde = $solde_initial-$montant;
+        \DB::table('operations')->insert(["id_client"=>auth()->user()->id,"montant"=>$montant,"solde_initial"=>$solde_initial,"new_solde"=>$new_solde,"date"=>$date,"id_type_op"=>2]);
+        \DB::table('comptes')->where("numeroCompte",$cpt_origin)->update(["solde"=>$new_solde]);
+        return redirect()->back();
     }
 
 }

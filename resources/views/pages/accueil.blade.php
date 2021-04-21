@@ -23,14 +23,15 @@
                                         <div class="overview-box clearfix">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-account-o">  </i>
-                                                <strong><h2 style="color:white">3 comptes</h2><br></strong>
+                                                @php $cpt= DB::table('comptes')->where('id_client',auth()->user()->id)->get(); @endphp
+                                                <strong><h2 style="color:white">{{$cpt->count()}} compte(s)</h2></strong>
 
                                             </div>
-                                            <div class="text">
+                                            <div class="text">x
 
-                                                {{-- <span> . </span><br> --}}
+                                                {{-- <span> compte(s) </span><br> --}}
 
-                                              <a href=""><h3 style="color:white;"></h3></a>
+                                              {{-- <a href=""><h3 style="color:white;">compte(s)</h3></a> --}}
                                             </div>
                                         </div>
                                         {{-- <div class="overview-chart">
@@ -44,7 +45,7 @@
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
-                                                <i class="zmdi zmdi-upload"></i>
+                                                {{-- <i class="zmdi zmdi-upload"></i> --}}
                                             </div>
                                             <div class="text">
                                                 <h2>15000000 f</h2>
@@ -93,8 +94,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        </div> <br> <br>
+                        {{-- <div class="row">
                             <div class="col-lg-12">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
@@ -119,7 +120,7 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> --}}
                         <div class="rw">
                             <div class="col-lg-12">
                                 <h2 class="title-1 m-b-25">Historique des transactions</h2>

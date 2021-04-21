@@ -18,13 +18,14 @@
                         </div>
                     </div>
                 </div> <br>
+
                 <div class="row">
-                    <div class="col-lg-6 offset-lg-1">
+                    <div class="col-lg-6 offset-lg-0">
                         <div class="card">
                             {{-- <div class="card-header">transaction</div> --}}
                             <div class="card-body">
                                 <div class="card-title">
-                                    <h3 class="text-center title-2">Transaction</h3>
+                                    <h3 class="text-center title-2">Effectuer un Virement</h3>
                                 </div>
                                 <hr>
                                 <form action="{{route('add_virement')}}" method="post" >
@@ -223,7 +224,40 @@
 
 
                 </div>
+                <div class="rw">
+                    <div class="col-lg-12">
+                        <h2 class="title-1 m-b-25">Historique des transactions</h2>
+                        <div class="table-responsive table--no-card m-b-40">
+                            <table class="table table-borderless table-striped table-earning">
+                                <thead>
+                                    <tr>
+                                        <th>date</th>
+                                        <th>num compte initial</th>
+                                        <th>num compte destinataire</th>
+                                        <th class="text-right">montant transaction</th>
 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $virements=DB::table('virements')->where('id_client',auth()->user()->id)->get();
+                                    @endphp
+                                    @foreach ($virements as $v )
+                                    <tr>
+                                        <td>{{$v->date_virement}}</td>
+                                        <td>{{$v->numcompte_origin}}</td>
+                                        <td>{{$v->numcompte_destin}}</td>
+                                        <td class="text-right">{{$v->montant}}</td>
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
