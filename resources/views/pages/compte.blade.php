@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon">Numero de compte</div>
-                                    <input type="text" id="username3" value="{{auth()->user()->nom}}" name="nom" class="form-control">
+                                    <input type="text" id="username3" value="{{auth()->user()->num_compte}}" name="num_cpte" class="form-control">
                                     <div class="input-group-addon">
                                         <i class="fa fa-user"></i>
                                     </div>

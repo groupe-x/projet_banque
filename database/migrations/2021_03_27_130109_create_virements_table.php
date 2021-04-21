@@ -15,6 +15,7 @@ class CreateVirementsTable extends Migration
     {
         Schema::create('virements', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_client');
             $table->bigInteger('numcompte_origin');
             $table->bigInteger('numcompte_destin');
             $table->bigInteger('montant');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\sendmail;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -63,7 +64,7 @@ $userdata = array(
     } else {
 
 
-        return Redirect::to('login');
+        return redirect()->route('login');
 
     }
 
@@ -90,9 +91,13 @@ $userdata = array(
       $client->civilite=$request->civilite;
       $client->dateNaissance=$request->date_naissance;
       $client->numero=$request->numero;
-      $id=$client->save();
-      dd($id);
-        return redirect()->route('login.index');
+      $client->save();
+    //   dd();
+      \DB::table('comptes')->insert(["numeroCompte"=>sprintf("%06d", mt_rand(1, 999999999999)),"id_client"=>$client->id,"solde"=>"50000","id_typecompte"=>$request->type_compte]);
+      \DB::table('adresses')->insert(["detail"=>$request->adresse,"id_client"=>$client->id]);
+      Mail::to("virtus225one@gmail.com")->send(new sendmail("mail.bienvenue",$client->id));
+
+      return redirect()->route('login');
     }
 
     /**

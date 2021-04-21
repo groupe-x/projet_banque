@@ -2,26 +2,30 @@
 
 namespace App\Mail;
 
+use App\Models\Client;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class sendmail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $template;
-
+    public $client;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($template)
+    public function __construct($template,$id_client)
     {
+
         $this->template = $template;
+        $this->client =Client::find($id_client);
+        // dd(Client::find($id_client));
     }
 
     /**
@@ -31,7 +35,7 @@ class sendmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Pruni Banque !')
-                    ->view($this->template, ['user' => auth()->user()]);
+        return $this->subject('Bienvenue !')
+                    ->view($this->template, ['user' => $this->client]);
     }
 }

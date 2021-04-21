@@ -20,11 +20,11 @@ class CreateAdressesTable extends Migration
             // $table->String('numero');
             // $table->String('email');
             $table->unsignedBigInteger('id_client');
-            $table->foreign('id_client')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+            // $table->foreign('id_client')
+            // ->references('id')
+            // ->on('users')
+            // ->onDelete('cascade')
+            // ->onUpdate('cascade');
             $table->timestamps();
         });
     }

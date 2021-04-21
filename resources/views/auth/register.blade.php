@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+
     <title>register</title>
 </head>
 <body>
@@ -140,21 +142,27 @@
 
         </div>
         <div class="tab">
+            Adresse:
+            <p><input type="text" name="adresse" id="piece" placeholder="Entrez votre adresse" required=""></p>
+
             Numero piece d'identité:
             <p><input type="text" name="num_piece" id="piece" placeholder="Entrez le numero de votre piece d'identité" required=""></p>
 
             Type de compte:
             <p>
                 <select name="type_compte" id="">
-                    <option value="epargne">epargne</option>
-                    <option value="courant">courant</option>
+                    <option value="1">epargne</option>
+                    <option value="2">courant</option>
                 </select>
             </p>
+            Premier versement:
+            <p><input type="text" name="num_piece" id="piece" value="50 000" disabled></p>
+
         </div>
 
         <div style="overflow:auto;">
             <div style="float:right;">
-                <a href="{{route('home')}}"> <span class="btn btn-outline-danger">Annuler</span></a>
+                <a href="{{url('/')}}"> <span class="btn btn-outline-danger">Annuler</span></a>
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Précédent</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Suivant</button>
             </div>

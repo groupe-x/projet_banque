@@ -33,8 +33,8 @@
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <a href="#" class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">connexion</a> <a href="#"
-                                                                                                       class="btn btn-info my-2 my-sm-0 text-uppercase">inscription
+                <a href="{{route('login')}}" class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">connexion</a>
+                <a href="{{route('register')}}" class="btn btn-info my-2 my-sm-0 text-uppercase">inscription
                 </a>
             </form>
         </div>
