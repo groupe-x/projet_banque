@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeOperationsTableSeeder::class);
         $this->call(OperationsTableSeeder::class);
         $this->call(VirementsTableSeeder::class);
+        $this->call(NotifTableSeeder::class);
     }
 }

@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        if(auth()->check()) return view('home');
+        if(auth()->check()) return redirect()->route('home');
         return view('homesite.index');
     }
     public function home()
@@ -26,6 +26,21 @@ class HomeController extends Controller
     public function virement()
     {
         return view('pages.virement');
+    }
+
+    public function post_edit_profil(Request $request){
+        $pass = $request->password?bcrypt($request->password):null;
+        $nom = $request->nom;
+        $prenoms = $request->prenoms;
+        $email = $request->email;
+        if($pass!=null){
+            \DB::table('client')->where('id',auth()->user()->id)->update(["nom"=>$nom,"prenoms"=>$prenoms,"email"=>$email,"password"=>$pass]);
+        }
+        else{
+            \DB::table('client')->where('id',auth()->user()->id)->update(["nom"=>$nom,"prenoms"=>$prenoms,"email"=>$email]);
+
+        }
+        return redirect()->route('pages.compte');
     }
 
     public function add_virement(Request $request)

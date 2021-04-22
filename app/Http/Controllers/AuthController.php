@@ -6,6 +6,7 @@ use App\Mail\sendmail;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {

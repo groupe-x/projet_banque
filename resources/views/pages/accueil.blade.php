@@ -23,8 +23,8 @@
                                         <div class="overview-box clearfix">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-account-o">  </i>
-                                                @php $cpt= DB::table('comptes')->where('id_client',auth()->user()->id)->get(); @endphp
-                                                <strong><h2 style="color:white">{{$cpt->count()}} compte(s)</h2></strong>
+                                                @php $cpt= DB::table('comptes')->where('id_client',auth()->user()->id)->first(); @endphp
+                                                <strong><h2 style="color:white">compte {{DB::table('type_comptes')->where('id',$cpt->id_typecompte)->first()->libelle}} </h2></strong>
 
                                             </div>
                                             <div class="text">x
@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
+                            <div class="col-sm-6 col-lg-3 offset-lg-4">
                                 <div class="overview-item overview-item--c2">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -48,7 +48,7 @@
                                                 {{-- <i class="zmdi zmdi-upload"></i> --}}
                                             </div>
                                             <div class="text">
-                                                <h2>15000000 f</h2>
+                                                <h2>{{$cpt->solde}}</h2>
                                                 <span>solde total</span> <br>
                                             </div>
                                         </div>
@@ -58,42 +58,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c3">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-calendar-note"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>1,086</h2>
-                                                <span>this week</span>
-                                            </div>
-                                        </div>
-                                        {{-- <div class="overview-chart">
-                                            <canvas id="widgetChart3"></canvas>
-                                        </div> --}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c4">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <!--i class="zmdi zmdi-money"></i--->
-                                            </div>
-                                            <div class="text">
-                                                <h2>Transferer de l'argent F</h2>
-                                                <span>total earnings</span>
-                                            </div>
-                                        </div>
-                                        {{-- <div class="overview-chart">
-                                            <canvas id="widgetChart4"></canvas>
-                                        </div> --}}
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div> <br> <br>
                         {{-- <div class="row">
                             <div class="col-lg-12">
@@ -121,7 +86,7 @@
                             </div>
 
                         </div> --}}
-                        <div class="rw">
+                        {{-- <div class="rw">
                             <div class="col-lg-12">
                                 <h2 class="title-1 m-b-25">Historique des transactions</h2>
                                 <div class="table-responsive table--no-card m-b-40">
@@ -154,7 +119,44 @@
 
 
                             </div>
+                        </div> --}}
+                        <div class="rw">
+                            <div class="col-lg-12">
+                                <h2 class="title-1 m-b-25">Historique des transactions</h2>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>date</th>
+                                                <th>type d'operation</th>
+                                                <th >montant</th>
+                                                <th>ancien solde</th>
+                                                <th class="text-right">nouveau solde</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $openrations=DB::table('operations')->where('id_client',auth()->user()->id)->get();
+                                            @endphp
+                                            @foreach ($openrations as $v )
+                                            <tr>
+                                                <td>{{$v->date}}</td>
+                                                <td>{{DB::table('type_operations')->where('id',$v->id_type_op)->first()->libelle}}</td>
+                                                <td>{{$v->montant}}</td>
+                                                <td>{{$v->solde_initial}}</td>
+                                                <td class="text-right">{{$v->new_solde}}</td>
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>

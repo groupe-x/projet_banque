@@ -18,7 +18,6 @@ class CreateNotifTable extends Migration
             $table->unsignedBigInteger('id_client');
             $table->String('icon');
             $table->String('msg');
-            $table->String('date');
             $table->String('route');
 
             $table->timestamps();

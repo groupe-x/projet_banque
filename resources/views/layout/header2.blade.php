@@ -51,25 +51,34 @@
                                 </div>
                             </div>
                         </div> --}}
+
+                        @php
+                            $notif=DB::table('notif')->where('id_client',auth()->user()->id)->orderBy('created_at','desc')->take(5)->get();
+                        @endphp
                         <div class="noti__item js-item-menu">
                             <i class="zmdi zmdi-notifications"></i>
-                            <span class="quantity">3</span>
+                            <span class="quantity">{{count($notif)}}</span>
                             <div class="notifi-dropdown js-dropdown">
                                 <div class="notifi__title">
-                                    <p>You have 3 Notifications</p>
+                                    <p>Vous avez {{count($notif)}} Notification(s)</p>
                                 </div>
+                                @foreach ($notif as $i=>$n )
                                 <div class="notifi__item">
-                                    <div class="bg-c1 img-cir img-40">
-                                        <i class="zmdi zmdi-email-open"></i>
+                                    <div class="bg-c{{$i+1}} img-cir img-40">
+                                        <i class="{{$n->icon}}"></i>
                                     </div>
+
+                                   <a href="{{route($n->route)}}">
                                     <div class="content">
-                                        <p>You got a email notification</p>
-                                        <span class="date">April 12, 2018 06:50</span>
+                                        <p>{{$n->msg}}</p>
+                                        <span class="date">{{$n->created_at}}</span>
                                     </div>
+                                   </a>
                                 </div>
-                                <div class="notifi__item">
+                                @endforeach
+                                {{-- <div class="notifi__item">
                                     <div class="bg-c2 img-cir img-40">
-                                        <i class="zmdi zmdi-account-box"></i>
+                                        <i class="zmdi zmdi-account"></i>
                                     </div>
                                     <div class="content">
                                         <p>Your account has been blocked</p>
@@ -84,17 +93,17 @@
                                         <p>You got a new file</p>
                                         <span class="date">April 12, 2018 06:50</span>
                                     </div>
-                                </div>
-                                <div class="notifi__footer">
+                                </div> --}}
+                                {{-- <div class="notifi__footer">
                                     <a href="#">All notifications</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                <img src="profil/user.png" alt="John Doe" />
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#"></a>
@@ -103,7 +112,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="profil/user.png" alt="John Doe" />
                                         </a>
                                     </div>
                                     <div class="content">
@@ -115,13 +124,13 @@
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-account"></i>Account</a>
+                                        <a href="{{route('pages.compte')}}">
+                                            <i class="zmdi zmdi-account"></i>mon compte</a>
                                     </div>
-                                    <div class="account-dropdown__item">
+                                    {{-- <div class="account-dropdown__item">
                                         <a href="#">
                                             <i class="zmdi zmdi-settings"></i>Setting</a>
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                                 <div class="account-dropdown__footer">

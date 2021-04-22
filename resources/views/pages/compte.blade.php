@@ -21,18 +21,40 @@
             <div class="row m-t-55">
                 <div class="col-sm-12 col-lg-6">
                     <div style="background-color: black; width:60%;height:250px">
-                        <img style="width:100%;height:100%" src="images/icon/avatar-02.jpg" alt="">
+                        <img style="width:100%;height:100%" src="profil/user.png" alt="">
                     </div>
                     <br>
-                    <button class="btn btn-outline-dark">choisir une image</button>
+                    <form action="{{route('upload')}}" method="post" enctype="multipart/form-data" id="form">
+                        @csrf
+                        <input type="file" onchange="validate()" class="btn btn-outline-dark" name="file" id="fileToUpload">
+                        {{-- <input type="submit" value="Upload Image" name="submit"> --}}
+                    </form>
+                    {{-- <button class="btn btn-outline-dark">choisir une image</button> --}}
                 </div>
+                <script>
+                    function validate() {
+                        document.getElementById('form').submit();
+                    }
+                </script>
                 <div class="col-sm-12 col-lg-6">
                     <div class="card-body card-block">
-                        <form action="" method="post" class="">
+                        <form action="{{route('post_edit_profil')}}" method="post" >
+                            @csrf
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon">Numero de compte</div>
-                                    <input type="text" id="username3" value="{{auth()->user()->num_compte}}" name="num_cpte" class="form-control">
+                                    {{-- <input type="text" id="username3" value="{{auth()->user()->num_compte}}" name="num_cpte" class="form-control"> --}}
+                                    @php
+                                    $cpt= DB::table('comptes')->where('id_client',auth()->user()->id)->get()
+                                        @endphp
+                                        <select class="" name="num_cpte" id="">
+                                            @foreach ($cpt as $item)
+                                                <option value="{{$item->numeroCompte}}">{{$item->numeroCompte}}</option>
+                                            @endforeach
+                                        </select>
+                                    {{-- <select name="num_cpte" id="username3">
+                                        <option value="">gjhgjhj</option>
+                                    </select> --}}
                                     <div class="input-group-addon">
                                         <i class="fa fa-user"></i>
                                     </div>

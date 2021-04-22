@@ -46,7 +46,7 @@
             <div class="col-md-6">
                 <h1> A vos coté depuis toujours, <span>pruniBanque</span> vous accompagne. </h1>
                 <p> La banque du futur ... </p>
-                <a href="#">Nous rejoindre <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+                <a href="{{route('register')}}">Nous rejoindre <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
             <div class="col-md-6">
                 <div class="card"><img class="card-img-top img-fluid" src="images/banner-img.png" alt=""></div>
             </div>
