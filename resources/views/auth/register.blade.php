@@ -104,7 +104,7 @@
 
 
     <div class="contents" style="background-image: url({{asset('images/bq.jpg')}});background-attachment: fixed;background-size: cover;">
-    <h1 style="text-align:center; font-size:50px; margin-top:10px; color:#fff">PRUNI BANQUE</h1>
+    <h1 style="text-align:center; font-size:50px; margin-top:10px; color:#fff">Ivoire Banque</h1>
     <form id="regForm" method="post" action="{{route('register.store')}}">
         @csrf
         <h1>ENREGISTREMENT</h1>

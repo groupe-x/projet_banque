@@ -3,7 +3,7 @@
     <div class="logo">
         <a href="{{route('home')}}">
             {{-- <img src="images/icon/logo.png" alt="Cool Admin" /> --}}
-            <span style="color: black;font-size:25px;font-weight:bold">Pruni</span> <span style="color: grey;font-size:25px;font-weight:bold">Banque</span>
+            <span style="color: black;font-size:25px;font-weight:bold">Ivoire</span> <span style="color: grey;font-size:25px;font-weight:bold">Banque</span>
         </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">

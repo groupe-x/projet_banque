@@ -19,7 +19,7 @@ class Compte extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = ['id_client','id_typecompte','numeroCompte'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,7 +34,10 @@ class Compte extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'id_client', 'id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

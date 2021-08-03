@@ -39,15 +39,16 @@ class ClientCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('prenoms');
         CRUD::column('nom');
+        CRUD::column('prenoms');
         CRUD::column('email');
         CRUD::column('password');
-        CRUD::column('type_de_compte');
+        // CRUD::column('type_de_compte');
         CRUD::column('civilite');
         CRUD::column('dateNaissance');
         CRUD::column('numero');
-        CRUD::column('is_ok');
+        CRUD::addColumn(['name' => 'is_ok', 'type' => 'boolean', 'label' => 'valider']);
+        $this->crud->enableExportButtons();
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -66,15 +67,18 @@ class ClientCrudController extends CrudController
     {
         CRUD::setValidation(ClientRequest::class);
 
-        CRUD::field('prenoms');
         CRUD::field('nom');
-        CRUD::field('email');
+        CRUD::field('prenoms');
+        CRUD::addField(['name' => 'email', 'type' => 'email', 'label' => 'Email']);
+        // CRUD::field('email');
         CRUD::field('password');
-        CRUD::field('type_de_compte');
+        // CRUD::field('type_de_compte');
         CRUD::field('civilite');
-        CRUD::field('dateNaissance');
+        // CRUD::field('dateNaissance');
+        CRUD::addField(['name' => 'dateNaissance', 'type' => 'date', 'label' => 'date de Naissance']);
         CRUD::field('numero');
-        CRUD::field('is_ok');
+        CRUD::addField(['name' => 'is_ok', 'type' => 'boolean', 'label' => 'valider']);
+        // CRUD::field('is_ok');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

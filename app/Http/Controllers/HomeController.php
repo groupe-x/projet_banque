@@ -53,6 +53,16 @@ class HomeController extends Controller
         $cpt=\DB::table('comptes')->where("numeroCompte",$cpt_origin)->first();
         $solde_initial = $cpt->solde;
         $new_solde = $solde_initial-$montant;
+
+        $cpt_destinataire = \DB::table('comptes')->where("numeroCompte",$cpt_desti)->first();
+        if($cpt_destinataire){
+            $destinataire=\DB::table('client')->where("id",$cpt_destinataire->id_client)->first();
+            $ns= $cpt_destinataire->solde+$montant;
+            \DB::table('operations')->insert(["id_client"=>$destinataire->id,"montant"=>$montant,"solde_initial"=>$cpt_destinataire->solde,"new_solde"=>$ns,"date"=>$date,"id_type_op"=>1]);
+            \DB::table('comptes')->where("numeroCompte",$cpt_desti)->update(["solde"=>$ns]);
+
+        }
+// dd($montant);
         \DB::table('operations')->insert(["id_client"=>auth()->user()->id,"montant"=>$montant,"solde_initial"=>$solde_initial,"new_solde"=>$new_solde,"date"=>$date,"id_type_op"=>2]);
         \DB::table('comptes')->where("numeroCompte",$cpt_origin)->update(["solde"=>$new_solde]);
         return redirect()->back();

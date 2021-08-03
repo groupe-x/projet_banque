@@ -21,11 +21,14 @@
                                 <div class="overview-item overview-item--c1">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-account-o">  </i>
+                                            <div class="icon text-center">
+                                                
                                                 @php $cpt= DB::table('comptes')->where('id_client',auth()->user()->id)->first(); @endphp
-                                                <strong><h2 style="color:white">compte {{DB::table('type_comptes')->where('id',$cpt->id_typecompte)->first()->libelle}} </h2></strong>
-
+                                                <h2 style="color:white">
+                                                    <i class="zmdi zmdi-account-o"></i> &nbsp;&nbsp;&nbsp; {{auth()->user()->nom}}
+                                                    {{-- compte {{DB::table('type_comptes')->where('id',$cpt->id_typecompte)->first()->libelle}}  --}}
+                                                </h2>
+<br>
                                             </div>
                                             <div class="text">x
 
@@ -48,8 +51,8 @@
                                                 {{-- <i class="zmdi zmdi-upload"></i> --}}
                                             </div>
                                             <div class="text">
-                                                <h2>{{$cpt->solde}}</h2>
-                                                <span>solde total</span> <br>
+                                                <h3>solde actuel</h3> 
+                                                <h2>{{$cpt->solde}} f cfa</h2> <br>
                                             </div>
                                         </div>
                                         {{-- <div class="overview-chart">

@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <!-- custom CSS -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <title>pruniBanque - la banque du futur</title>
+    <title>IvoireBanque - la banque du futur</title>
     <style>
 
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent" id="gtco-main-nav">
-    <div class="container"><a class="navbar-brand">pruniBanque</a>
+    <div class="container"><a class="navbar-brand">IvoireBanque</a>
         <button class="navbar-toggler" data-target="#my-nav" onclick="myFunction(this)" data-toggle="collapse"><span
                 class="bar1"></span> <span class="bar2"></span> <span class="bar3"></span></button>
         <div id="my-nav" class="collapse navbar-collapse">
@@ -44,7 +44,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1> A vos coté depuis toujours, <span>pruniBanque</span> vous accompagne. </h1>
+                <h1> A vos coté depuis toujours, <span>IvoireBanque</span> vous accompagne. </h1>
                 <p> La banque du futur ... </p>
                 <a href="{{route('register')}}">Nous rejoindre <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
             <div class="col-md-6">
@@ -85,10 +85,10 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <h2> Pruni Banque  </h2>
-                <p> Pruni Banque est une banque mutualiste et universel qui tire sa force de la singularité de ses valeurs de solidarité et de mutualité marquées dans son organisation et de son fonctionnement unique en cote d'ivoire </p>
+                <h2> Ivoire Banque  </h2>
+                <p> Ivoire Banque est une banque mutualiste et universel qui tire sa force de la singularité de ses valeurs de solidarité et de mutualité marquées dans son organisation et de son fonctionnement unique en cote d'ivoire </p>
                 <p>
-                    <small> Pruni Banque fonde son efficacité sur 1600 collaborateurs répartis dans 14 filiales actives dans les domaines de la Banque d’Affaires, de la Banque et des Assurances pour proposer des conseils en matière de financements et des solutions d’investissements en s’appuyant sur L’expertise et le savoir-faire de ses équipes.
+                    <small> Ivoire Banque fonde son efficacité sur 1600 collaborateurs répartis dans 14 filiales actives dans les domaines de la Banque d’Affaires, de la Banque et des Assurances pour proposer des conseils en matière de financements et des solutions d’investissements en s’appuyant sur L’expertise et le savoir-faire de ses équipes.
                     </small>
                 </p>
                 <!-- <a href="#">Learn More <i class="fa fa-angle-right" aria-hidden="true"></i></a></div> -->

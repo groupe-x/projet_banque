@@ -39,7 +39,10 @@ class CompteCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
+        // CRUD::setFromDb(); // columns
+        CRUD::column('numeroCompte')->type('text')->label('numero de compte');
+        CRUD::column('solde')->type('text')->label('solde');
+        $this->crud->enableExportButtons();
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,8 +61,20 @@ class CompteCrudController extends CrudController
     {
         CRUD::setValidation(CompteRequest::class);
 
-        CRUD::setFromDb(); // fields
-
+        // CRUD::setFromDb(); // fields
+        $this->crud->addField([
+            'label' => "Client",
+            'type' => 'select2',
+            'name' => 'id_client',// the db column for the foreign key
+            // optional
+            'entity'    => 'client', // the method that defines the relationship in your Model
+            'model'     => "App\Models\Client", // foreign key model
+            'attribute' => 'nom', // foreign key attribute that is shown to user
+            'default'   => 1 // set the default value of the select2
+        ]);
+        CRUD::field('numeroCompte')->type('number')->label('numero de compte');
+        CRUD::field('solde')->type('number')->label('solde initial');
+        
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

@@ -39,7 +39,14 @@ class VirementCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
+        // CRUD::setFromDb(); // columns
+        CRUD::column('numcompte_origin')->type('text')->label('N° compte de base');
+        CRUD::column('numcompte_destin')->type('text')->label('N° compte destinataire');
+        CRUD::column('montant')->type('text')->label('Montant');
+        CRUD::column('date_virement')->type('date')->label('Date de virement');
+
+        $this->crud->enableExportButtons();
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,7 +65,11 @@ class VirementCrudController extends CrudController
     {
         CRUD::setValidation(VirementRequest::class);
 
-        CRUD::setFromDb(); // fields
+        // CRUD::setFromDb(); // fields
+        CRUD::field('numcompte_origin')->type('number')->label('N° compte de base');
+        CRUD::field('numcompte_destin')->type('number')->label('N° compte destinataire');
+        CRUD::field('montant')->type('number')->label('Montant');
+        CRUD::field('date_virement')->type('date')->label('Date de virement');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

@@ -19,7 +19,7 @@
           </div>
           <form method="POST" class="log-in" action="{{ route('login.login') }}">
             @csrf
-            <h4> <span>Pruni Banque</span> ! </h4>
+            <h4> <span>Ivoire Banque</span> ! </h4>
             <p>Votre Banque par excellence !</p>
             {{-- @dd(session("failed")) --}}
             @if(session("failed"))

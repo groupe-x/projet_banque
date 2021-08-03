@@ -18,7 +18,7 @@ class CreateComptesTable extends Migration
             $table->bigInteger('numeroCompte');
             $table->unsignedBigInteger('id_client');
             $table->bigInteger('solde');
-            $table->unsignedBigInteger('id_typecompte');
+            $table->unsignedBigInteger('id_typecompte')->default(2);
             $table->foreign('id_typecompte')
             ->references('id')
             ->on('type_comptes')
